@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://de5cgx386nf45"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_mgaw0"]
+[ext_resource type="PackedScene" uid="uid://xrxdvrmggj5h" path="res://wizard.tscn" id="2_urj0h"]
+[ext_resource type="AudioStream" uid="uid://qh0ctnmpakhl" path="res://8bit-jump.mp3" id="3_xxjfq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrh2b"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_mgaw0")
+
+[node name="Wizard" parent="." instance=ExtResource("2_urj0h")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lrh2b")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_xxjfq")
+volume_db = -10.0
+pitch_scale = 0.7

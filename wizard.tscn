@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://xrxdvrmggj5h"]
+
+[ext_resource type="Texture2D" uid="uid://cp8m6q4sqc31r" path="res://Wizard_v1_SS.png" id="1_7nww2"]
+[ext_resource type="Script" path="res://Wizard.gd" id="2_go3di"]
+
+[sub_resource type="Animation" id="Animation_1my1y"]
+resource_name = "Crouch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_xkbt3"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bogff"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lprff"]
+_data = {
+"Crouch": SubResource("Animation_1my1y"),
+"Idle": SubResource("Animation_xkbt3"),
+"Walk": SubResource("Animation_bogff")
+}
+
+[node name="Wizard" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_7nww2")
+hframes = 3
+region_rect = Rect2(7.035, 0, 0, 0)
+script = ExtResource("2_go3di")
+
+[node name="WizardAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lprff")
+}
+speed_scale = 2.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)

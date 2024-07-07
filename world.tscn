@@ -32,3 +32,5 @@ shape = SubResource("RectangleShape2D_rk7td")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
 position = Vector2(98, 49)
 texture = ExtResource("2_u1j8w")
+
+[node name="Timer" type="Timer" parent="."]
